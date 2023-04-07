@@ -23,8 +23,28 @@ function addInsert() {
         completed: false});
     
     setTasks(tasks);
+    
 
 }
+
+//Set the refreshList function to take list of tasks and render them to the user
+function refreshList() {
+    task_element.innerHTML = "";
+    for (const insert of tasks) {
+        const task_element = task_template.content.cloneNode(true);
+        const descriptionInput = task_element.queryselector(".add");
+        const completedInput = task_element.queryselector(".completed-task");
+
+    
+        descriptionInput.value = tasks.description;
+        completedInput.checked = tasks.completed;
+
+        task_element.append(task_element);
+    }
+
+}
+
+
 
 
 
