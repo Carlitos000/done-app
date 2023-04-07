@@ -23,12 +23,13 @@ function addInsert() {
         completed: false});
     
     setTasks(tasks);
+    refreshTasks();
     
 
 }
 
-//Set the refreshList function to take list of tasks and render them to the user
-function refreshList() {
+//Set the refreshTasks function to take list of tasks and render them to the user
+function refreshTasks() {
     task_element.innerHTML = "";
     for (const insert of tasks) {
         const task_element = task_template.content.cloneNode(true);
