@@ -28,8 +28,11 @@ body {
     font-size: large;
     
 }
+.completed-task {
+    height: 30px;
+}
 .completed-task:checked + .add {
-    background: greenyellow;
+    background: red;
 
 }
 #new-task {
