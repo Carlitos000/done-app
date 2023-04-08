@@ -17,7 +17,7 @@ function setTasks(task) {
 }
 
 //Defining the logic for adding a new task and add a Set function to save the new tasks in a local storage
-function addInsert() {
+function addItem() {
     tasks.unshift({
         description: "",
         completed: false});
@@ -27,27 +27,58 @@ function addInsert() {
     
 
 }
+//Set the updateTasks function to add the new data
+
+function updateTasks(item, key, value) {
+    item[key] = value;
+    setTasks(tasks);
+    refreshTasks();
+
+}
 
 //Set the refreshTasks function to take list of tasks and render them to the user
 function refreshTasks() {
     task_element.innerHTML = "";
-    for (const insert of tasks) {
-        const task_element = task_template.content.cloneNode(true);
-        const descriptionInput = task_element.queryselector(".add");
-        const completedInput = task_element.queryselector(".completed-task");
+    for (const item of tasks) {
+        const itemElement = task_template.content.cloneNode(true);
+        const descriptionInput = itemElement.querySelector(".add");
+        const completedInput = itemElement.querySelector(".completed-task");
 
     
-        descriptionInput.value = tasks.description;
-        completedInput.checked = tasks.completed;
+        descriptionInput.value = item.description;
+        completedInput.checked = item.completed;
+        //Add event listener for both inputs using the updateTasks function to allow update in the local storage when the data is changed
+        descriptionInput.addEventListener("change", () => {
+            updateTasks(item, "description", descriptionInput.value);
+        });
+        completedInput.addEventListener("change", () => {
+            updateTasks(item, "completed", completedInput.checked);
+        });
 
-        task_element.append(task_element);
+        task_element.append(itemElement);
     }
+
+    //Set the afphabetic order and if they were completed or not 
+    tasks.sort((a,b)=>{
+        if (a.completed) {
+            return 1;
+        }
+        if(b.completed) {
+            return -1;
+        }
+        return a.description < b.description ? -1 : 1;
+
+    });
 
 }
 
 
 
+// Set the New Task button event listener to add new inputs
+new_task_button.addEventListener("click", () => { 
+    addItem();
+});
 
+refreshTasks()
 
-console.log(tasks);
 
