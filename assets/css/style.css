@@ -45,3 +45,9 @@ body {
     padding: 8px 12px;
     cursor: pointer;
 }
+span {
+    text-align: center;
+    background: red;
+    width: 50px
+   
+}
