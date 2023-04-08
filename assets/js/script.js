@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 //Reference each element
 const task_element = document.getElementById("tasks");
 const task_template = document.getElementById("task-template");
@@ -48,10 +49,10 @@ function refreshTasks() {
         descriptionInput.value = item.description;
         completedInput.checked = item.completed;
         //Add event listener for both inputs using the updateTasks function to allow update in the local storage when the data is changed
-        descriptionInput.addEventListener("change", () => {
+        descriptionInput.addEventListener("change", (updateTasks) => {
             updateTasks(item, "description", descriptionInput.value);
         });
-        completedInput.addEventListener("change", () => {
+        completedInput.addEventListener("change", (updateTasks) => {
             updateTasks(item, "completed", completedInput.checked);
         });
 
@@ -79,6 +80,6 @@ new_task_button.addEventListener("click", () => {
     addItem();
 });
 
-refreshTasks()
+refreshTasks();
 
 
