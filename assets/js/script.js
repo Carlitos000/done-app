@@ -3,6 +3,7 @@
 const task_element = document.getElementById("tasks");
 const task_template = document.getElementById("task-template");
 const new_task_button = document.getElementById("new-task");
+const delete_task = document.getElementById("delete-btn")
 
 //Fetch the existing task items from local storage, convert a JSON string into a javascript array and set the tasks items
 let tasks = getTasks();
@@ -59,6 +60,8 @@ function refreshTasks() {
         task_element.append(itemElement);
     }
 
+
+
     //Set the afphabetic order and if they were completed or not 
     tasks.sort((a,b)=>{
         if (a.completed) {
@@ -78,7 +81,16 @@ function refreshTasks() {
 // Set the New Task button event listener to add new inputs
 new_task_button.addEventListener("click", () => { 
     addItem();
+
+
 });
+// Set the Delete Button
+//delete_task.document.querySelector("delete-btn");
+//for(let i=0; i<close.length; i++){
+//    close.addEventListener("click", () => {
+//        close.parentElement.style.display = "none";
+//    });
+//}
 
 refreshTasks();
 
