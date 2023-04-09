@@ -49,10 +49,10 @@ function refreshTasks() {
         descriptionInput.value = item.description;
         completedInput.checked = item.completed;
         //Add event listener for both inputs using the updateTasks function to allow update in the local storage when the data is changed
-        descriptionInput.addEventListener("change", (updateTasks) => {
+        descriptionInput.addEventListener("change", () => {
             updateTasks(item, "description", descriptionInput.value);
         });
-        completedInput.addEventListener("change", (updateTasks) => {
+        completedInput.addEventListener("change", () => {
             updateTasks(item, "completed", completedInput.checked);
         });
 
@@ -81,5 +81,7 @@ new_task_button.addEventListener("click", () => {
 });
 
 refreshTasks();
+
+
 
 
